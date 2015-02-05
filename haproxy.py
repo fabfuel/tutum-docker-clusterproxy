@@ -100,7 +100,7 @@ def update_cfg(cfg, backend_routes, vhost):
     logger.debug("Updating cfg: \n old cfg: %s\n backend_routes: %s\n vhost: %s", cfg, backend_routes, vhost)
     # Set frontend
     frontend = []
-    frontend.append("bind 0.0.0.0:80")
+    frontend.append("bind 0.0.0.0:%s" % PORT)
     if SSL:
         frontend.append("redirect scheme https code 301 if !{ ssl_fc }"),
         frontend.append("bind 0.0.0.0:443 %s" % SSL)
